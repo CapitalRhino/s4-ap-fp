@@ -37,8 +37,10 @@ doubleSecond xs =
     case xs of
         [] ->
             []
+        -- A case where the first two items are extracted and ys is used for recursion
         y :: z :: ys ->
             y :: z * 2 :: doubleSecond ys
+        -- Base recursive case
         y :: ys ->
             y :: doubleSecond ys
             
@@ -204,6 +206,59 @@ creditcards = [ 4716347184862961,
               ]
 
 -- collecting results for printing:
+
+testToDigitsUnevenNumberedString: Bool
+testToDigitsUnevenNumberedString = (toDigits "379055805946370" == [3,7,9,0,5,5,8,0,5,9,4,6,3,7,0])
+
+testToDigitEvenNumberedString: Bool
+testToDigitEvenNumberedString  = (toDigits "4716347184862961" == [4,7,1,6,3,4,7,1,8,4,8,6,2,9,6,1])
+
+
+testToDigitRevUneven: Bool
+testToDigitRevUneven = (toDigitsRev "345763240913232" == [2,3,2,3,1,9,0,4,2,3,6,7,5,4,3])
+
+testToDigitRevEven: Bool
+testToDigitRevEven = (toDigitsRev "4716347184862961" == [1,6,9,2,6,8,4,8,1,7,4,3,6,1,7,4])
+
+
+testDoubleSecondEven: Bool
+testDoubleSecondEven = (doubleSecond [4,7,1,6,3,4,7,1,8,4,8,6,2,9,6,1] == [4,14,1,12,3,8,7,2,8,8,8,12,2,18,6,2])
+
+
+testDoubleSecondUneven: Bool
+testDoubleSecondUneven = (doubleSecond [3,4,5,7,6,3,2,4,0,9,1,3,2,3,2] == [3,8,5,14,6,6,2,8,0,18,1,6,2,6,2])
+
+
+testSumDigitsUneven: Bool
+testSumDigitsUneven = (sumDigits [3,8,5,14,6,6,2,8,0,18,1,6,2,6,2] == 69)
+
+testSumDigitsEven: Bool
+testSumDigitsEven = (sumDigits [4,14,1,12,3,8,7,2,8,8,8,12,2,18,6,2] == 79)
+
+
+-- Test a valid card
+testIsValid: Bool
+testIsValid = (isValid "4716347184862961" == True )
+
+-- Test an invald card
+testIsNOTvalid: Bool
+testIsNOTvalid = (isValid "4532899082537349" == False)
+
+
+testNumValid: Bool
+testNumValid = (numValid ["4532899082537349", "4485429517622493", "4320635998241421", "4929778869082405", "5256283618614517" ] == 2)
+
+
+testNumValidNoValidCards: Bool
+testNumValidNoValidCards = (numValid ["5567798501168013", "4532818294886666"] == 0)
+
+
+testExampleCreditCards: Bool
+testExampleCreditCards = (countValidCards creditcards == 94)
+
+allTests: List Bool
+allTests = [testToDigitsUnevenNumberedString, testToDigitEvenNumberedString, testToDigitRevUneven, testToDigitRevEven, testDoubleSecondEven, testDoubleSecondUneven, testSumDigitsUneven, testSumDigitsEven, testIsValid, testIsNOTvalid, testNumValid, testNumValidNoValidCards, testExampleCreditCards]
+
 
 my_results =
     [
