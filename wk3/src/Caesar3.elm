@@ -22,7 +22,7 @@ candidates canaries encryptedText =
         [] ->
             []
         x :: xs ->
-            filterList x (bruteGenerator encryptedText accumulatorStart) ++ candidates (List.drop 1 canaries) encryptedText
+            filterList x (bruteGenerator encryptedText accumulatorStart) ++ candidates xs encryptedText
 
 -- The Brute Generator generates all possible decrypted strings from a given start value
 bruteGenerator: String -> Int -> List (Int, String)
@@ -48,11 +48,12 @@ containsText: String -> String -> Bool
 containsText canary text =
     if String.left (String.length canary) text == canary then
         True
-    -- Necessary to prevent a RangeError: Maximum call stack exceeded
-    else if String.length text == 0 then
-        False
-    else
-        containsText canary (String.dropLeft 1 text)
+    else 
+        case String.uncons text of
+            Nothing ->
+                False
+            Just (_, tail) ->
+                containsText canary tail
 
 -- Tests
 testContainsText: Bool
