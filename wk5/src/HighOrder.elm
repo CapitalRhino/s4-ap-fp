@@ -63,3 +63,51 @@ testCollatzEven = repeatUntil myPredicate myCollatz [24] ==
 testCollatzOdd: Bool
 testCollatzOdd = repeatUntil myPredicate myCollatz [19] == 
     [1,2,4,8,16,5,10,20,40,13,26,52,17,34,11,22,44,88,29,58,19]
+
+testMyPredicate: Bool
+testMyPredicate = myPredicate [1,2,4,8,16]
+
+testDouble: Bool
+testDouble = double 2 == 4
+
+testAbove100: Bool
+testAbove100 = above100 101
+
+
+testRepeatUntil1: Bool
+testRepeatUntil1 = repeatUntil above100 double 7 == 112
+
+testRepeatUntil2: Bool
+testRepeatUntil2 = repeatUntil above100 ((+) 1) 42 == 101
+
+testRepeatUntil3: Bool
+testRepeatUntil3 = repeatUntil above100 ((+) 10) 42 == 102
+
+testRepeatUntil4: Bool
+testRepeatUntil4 = repeatUntil above100 ((*) 2) 42 == 168
+
+
+testLog100Base2: Bool
+testLog100Base2 = log 2 100 == 7 -- 2⁷ = 128
+
+testLog81Base3: Bool
+testLog81Base3 = log 3 81 == 4 -- 3⁴ = 81%
+
+testLog82Base3: Bool
+testLog82Base3 = log 3 82 == 5 -- 3⁴ = 81
+
+testLog80Base3: Bool
+testLog80Base3 = log 3 80 == 4 -- 3⁴ = 81
+
+testLog25Base5: Bool
+testLog25Base5 = log 5 25 == 2
+
+testLog48Base6: Bool
+testLog48Base6 = log 6 48 == 3
+
+
+allHighOrderTests: List Bool
+allHighOrderTests = [testCollatzEven, testCollatzOdd, testMyPredicate, testDouble, 
+    testAbove100, testRepeatUntil1, testRepeatUntil2, testRepeatUntil3, 
+    testRepeatUntil4, testLog100Base2, testLog81Base3, testLog82Base3, testLog80Base3, testLog25Base5, testLog48Base6]
+

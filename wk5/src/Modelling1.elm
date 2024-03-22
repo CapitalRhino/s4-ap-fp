@@ -22,15 +22,15 @@ print f =
         Const val ->
             String.fromInt val
         Poly func val ->
-            "(" ++ print func ++ " ^ " ++ String.fromInt val ++ ")"
+            "(" ++ print func ++ "^" ++ String.fromInt val ++ ")"
         Mult func1 func2 ->
-            "(" ++ print func1 ++ " * " ++ print func2 ++ ")"
+            "(" ++ print func1 ++ "*" ++ print func2 ++ ")"
         Div func1 func2 ->
-            "(" ++ print func1 ++ " / " ++ print func2 ++ ")"
+            "(" ++ print func1 ++ "/" ++ print func2 ++ ")"
         Plus func1 func2 ->
-            "(" ++ print func1 ++ " + " ++ print func2 ++ ")"
+            "(" ++ print func1 ++ "+" ++ print func2 ++ ")"
         Minus func1 func2 ->
-            "(" ++ print func1 ++ " - " ++ print func2 ++ ")"
+            "(" ++ print func1 ++ "-" ++ print func2 ++ ")"
         
 eval: Float -> Function -> Float
 eval num f =
